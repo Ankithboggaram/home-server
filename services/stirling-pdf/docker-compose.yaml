@@ -1,0 +1,30 @@
+version: '3.3'
+
+volumes:
+  stirlingpdf-tessdata:
+  stirlingpdf-configs:
+  stirlingpdf-custom:
+  stirlingpdf-logs:
+  stirlingpdf-pipeline:
+
+networks:
+  nginxproxymanager_backend:
+    external: true
+
+services:
+  stirling-pdf:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
+    container_name: stirling-pdf
+    ports:
+      - '8080:8080'
+    volumes:
+      - stirlingpdf-tessdata:/usr/share/tessdata  # Required for extra OCR languages
+      - stirlingpdf-configs:/configs
+      - stirlingpdf-custom:/customFiles/
+      - stirlingpdf-logs:/logs/
+      - stirlingpdf-pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - LANGS=en_GB
+    networks:
+      - nginxproxymanager_backend
