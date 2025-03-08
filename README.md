@@ -3,6 +3,8 @@
 ## Overview
 This repository serves as a backup for the configuration files of my various hosted services. I've done this to ensure they can be easily restored or migrated if needed. Additionally, this repository documents my current hardware setup / installed software and helps me brush up on my DevOps skills.
 
+If anyone is interested in hosting their own services, feel free to refer to my work!
+
 ## Hardware
 
 ### Intel NUC NUC7i5BEK
